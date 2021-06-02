@@ -1,4 +1,4 @@
-import { TodoModel } from '../../../models';
+import { TodoModel } from '../../models';
 
 export interface IState {
   todoList: TodoModel.ITodo[];

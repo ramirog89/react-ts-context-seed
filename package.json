@@ -2,17 +2,28 @@
   "name": "react-ts-context-pwa",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "yarn start:dev",
+    "start:local": "dotenv -e ./src/config/.env.local react-scripts start",
+    "start:dev": "dotenv -e ./src/config/.env.develop react-scripts start",
+    "build": "dotenv -e ./src/config/.env.production react-scripts build",
+    "test": "react-scripts test --watchAll=false --detectOpenHandles --coverage --verbose --forceExit",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
+    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "axios": "^0.21.1",
+    "dotenv-cli": "^4.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4",
@@ -28,12 +39,6 @@
     "workbox-routing": "^5.1.3",
     "workbox-strategies": "^5.1.3",
     "workbox-streams": "^5.1.3"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +56,41 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react-router": "^5.1.14",
+    "@types/react-router-dom": "^5.1.7"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!src/modules/App.tsx",
+      "!src/modules/models/**/*.*",
+      "!src/modules/context/provider.ts",
+      "!src/modules/context/rootState.ts",
+      "!src/modules/context/**/actions.ts",
+      "!src/constants/**/*.*",
+      "!src/reportWebVitals.ts",
+      "!src/service-worker.ts",
+      "!src/serviceWorkerRegistration.ts",
+      "!src/*.d.ts",
+      "!src/test/**/*.*",
+      "!src/**/index.{ts,tsx}"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "text-summary"
     ]
   }
 }

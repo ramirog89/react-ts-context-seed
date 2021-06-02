@@ -1,6 +1,6 @@
 import { useMemo, createContext, useReducer, useContext } from 'react';
 
-import { TodoModel } from '../../../models';
+import { TodoModel } from '../../models';
 import { IProviderProps } from '../rootState';
 import { IState, initialState } from './state';
 import { ActionType } from './actions';

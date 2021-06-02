@@ -1,6 +1,6 @@
 import { ActionType } from './actions';
 import { IState } from './state';
-import { GeneralModel } from '../../../models';
+import { GeneralModel } from '../../models';
 
 export const reducer = (state: IState, action: GeneralModel.IAction<ActionType>) => {
   switch (action.type) {
