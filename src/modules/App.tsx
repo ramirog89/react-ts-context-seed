@@ -3,6 +3,7 @@ import { ContextProvider } from './context/provider';
 
 import Main from './views/common/Main';
 import UseCaseList from './views/pages/UseCaseList';
+import UseCaseCreate from './views/pages/UseCaseCreate';
 
 function App() {
   return (
@@ -15,6 +16,15 @@ function App() {
             render={() =>
               <Main>
                 <UseCaseList />
+              </Main>
+            }
+          />
+          <Route
+            path={'/create'}
+            exact={true}
+            render={() =>
+              <Main>
+                <UseCaseCreate />
               </Main>
             }
           />
