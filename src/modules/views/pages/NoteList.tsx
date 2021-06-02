@@ -18,10 +18,10 @@ const NoteList = () => {
 
 	return (
 		<>
-			<button onClick={addTodoHandler}>Add todo</button>
+			<button data-testid="add-btn" onClick={addTodoHandler}>Add todo</button>
 			{state.todoList.map((todo) => (
-				<div key={todo.id}>
-					{todo.description} <button onClick={() => removeTodoHandler(todo.id)}>X</button>
+				<div data-testid="todo-item" key={todo.id}>
+					{todo.description} <button data-testid="delete-btn" onClick={() => removeTodoHandler(todo.id)}>X</button>
 				</div>
 			))}
 		</>

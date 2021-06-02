@@ -5,40 +5,60 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <button>
+      <button
+        data-testid="add-btn"
+      >
         Add todo
       </button>
-      <div>
+      <div
+        data-testid="todo-item"
+      >
         this is a description
          
-        <button>
+        <button
+          data-testid="delete-btn"
+        >
           X
         </button>
       </div>
-      <div>
+      <div
+        data-testid="todo-item"
+      >
         this is a description 2
          
-        <button>
+        <button
+          data-testid="delete-btn"
+        >
           X
         </button>
       </div>
     </div>
   </body>,
   "container": <div>
-    <button>
+    <button
+      data-testid="add-btn"
+    >
       Add todo
     </button>
-    <div>
+    <div
+      data-testid="todo-item"
+    >
       this is a description
        
-      <button>
+      <button
+        data-testid="delete-btn"
+      >
         X
       </button>
     </div>
-    <div>
+    <div
+      data-testid="todo-item"
+    >
       this is a description 2
        
-      <button>
+      <button
+        data-testid="delete-btn"
+      >
         X
       </button>
     </div>
