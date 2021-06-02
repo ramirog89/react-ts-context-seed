@@ -1,4 +1,4 @@
-import { useTodo } from '../../context/todo';
+import { useTodo } from '../../../context/todo';
 
 const NoteList = () => {
   const { state, addTodo, removeTodo } = useTodo();

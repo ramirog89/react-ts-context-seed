@@ -1,7 +1,8 @@
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { ContextProvider } from './context/provider';
 
-import NoteList from './views/pages/NoteList';
+import Main from './views/common/Main';
+import UseCaseList from './views/pages/UseCaseList';
 
 function App() {
   return (
@@ -11,7 +12,11 @@ function App() {
           <Route
             path={'/'}
             exact={true}
-            render={() => <NoteList />}
+            render={() =>
+              <Main>
+                <UseCaseList />
+              </Main>
+            }
           />
         </Switch>
       </Router>
