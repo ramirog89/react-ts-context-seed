@@ -5,17 +5,17 @@ import NoteList from './views/pages/NoteList';
 
 function App() {
   return (
-		<ContextProvider>
-			<Router>
-				<Switch>
-					<Route
-						path={'/'}
-						exact={true}
-						render={() => <NoteList />}
-					/>
-				</Switch>
-			</Router>
-		</ContextProvider>
+    <ContextProvider>
+      <Router>
+        <Switch>
+          <Route
+            path={'/'}
+            exact={true}
+            render={() => <NoteList />}
+          />
+        </Switch>
+      </Router>
+    </ContextProvider>
   );
 }
 

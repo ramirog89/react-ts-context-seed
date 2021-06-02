@@ -17,7 +17,7 @@ export const TodoContext = createContext<
 export const useTodo = () => {
   const context = useContext(TodoContext);
   if (!context) {
-    throw new Error('Error al cargar contexto TodoContext');
+    throw new Error('TodoContext is not wrapped with TodoContext.Provider');
   }
   return context;
 };
