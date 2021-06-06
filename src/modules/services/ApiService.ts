@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 import { ENV } from '../../constants';
+import { getTodo_1, getTodo_2 } from '../../test/entities';
 
 export class ApiService {
   private http = axios;
 
   public getTodo() {
-    return this.request('todo', { method: 'GET', data: {} });
+    return Promise.resolve([getTodo_1(), getTodo_2()]);
+    // return this.request('todo', { method: 'GET', data: {} });
   }
 
   private request(url: string, { method, data }: { method: any, data: any}) {

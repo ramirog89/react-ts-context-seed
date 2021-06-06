@@ -6,3 +6,10 @@ export const getTodo_1 = (): TodoModel.ITodo => ({
   description: 'description todo',
   status: false
 });
+
+export const getTodo_2 = (): TodoModel.ITodo => ({
+  id: 2,
+  title: 'post 2',
+  description: 'this is a description 2',
+  status: true,
+});

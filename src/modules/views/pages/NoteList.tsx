@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
+import { useGeneral } from '../../context/general';
 import { useTodo } from '../../context/todo';
 
 const NoteList = () => {
-  const { state, addTodo, removeTodo } = useTodo();
+	const { state: generalState } = useGeneral();
+  const { state, addTodo, removeTodo, fetchTodoList } = useTodo();
 
 	const addTodoHandler = () => {
 		addTodo({
@@ -14,6 +17,14 @@ const NoteList = () => {
 
 	const removeTodoHandler = (id: number) => {
 		removeTodo(id);
+	}
+
+	useEffect(() => {
+		fetchTodoList();
+	}, []); // eslint-disable-line
+
+	if (generalState.loading?.['fetchTodoList']?.isLoading) {
+		return <>Loading...</>;
 	}
 
 	return (
