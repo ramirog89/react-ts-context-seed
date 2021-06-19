@@ -1,35 +1,38 @@
-import { act, fireEvent } from '@testing-library/react';
+import { act, fireEvent, waitFor } from '@testing-library/react';
 import { render } from '../../../test/render';
 
 import NoteList from './NoteList';
 
+jest.useFakeTimers();
+
 describe('NoteList', () => {
-  it('should render', () => {
-    const wrapper = render(<NoteList />);
+  let wrapper: any;
 
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should add todo', () => {
-    const wrapper = render(<NoteList />);
+  it('should add todo', async () => {
+    await waitFor(() => {
+      wrapper = render(<NoteList />);
+    });
 
     act(() => {
       fireEvent.click(wrapper.getByTestId('add-btn'));
-    })
+    });
 
-    expect(wrapper.getAllByTestId('todo-item')).toHaveLength(3);
+    expect(wrapper.getAllByTestId('todo-item')).toHaveLength(2);
   });
 
 
-  it('should delete todo', () => {
-    const wrapper = render(<NoteList />);
+  it('should delete todo', async () => {
+    await waitFor(() => {
+      wrapper = render(<NoteList />);
+    });
 
     const deleteTodo = wrapper.getAllByTestId('delete-btn')[0];
 
-    act(() => {
-      fireEvent.click(deleteTodo);
-    })
-
-    expect(wrapper.getAllByTestId('todo-item')).toHaveLength(1);
+    waitFor(() => {
+      act(() => {
+        fireEvent.click(deleteTodo);
+      })
+      expect(wrapper.getAllByTestId('todo-item')).toHaveLength(1);
+    });
   });
 });

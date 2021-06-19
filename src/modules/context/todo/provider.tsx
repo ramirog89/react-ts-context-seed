@@ -10,7 +10,7 @@ import { useGeneral } from '../general';
 interface ITodoContext {
   state: IState;
   addTodo: (todo: TodoModel.ITodo) => void;
-  removeTodo: (index: number) => void;
+  removeTodo: (id: string) => void;
   fetchTodoList: () => void;
 }
 
@@ -27,29 +27,24 @@ export const useTodo = () => {
 export const TodoProvider = (props: IProviderProps) => {
   const { deps } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { addToast, setLoading } = useGeneral();
+  const { addToast } = useGeneral();
 
   const fetchTodoList = async () => {
-    setLoading('fetchTodoList', true);
     try {
-      setTimeout(async () => {
-        const list = await deps.apiService.getTodo();
-        dispatch({ type: ActionType.ADD_TODO_LIST, payload: { list } });
-        setLoading('fetchTodoList', false);
-
-      }, 2000);
+      const list = await deps.apiService.getTodo();
+      dispatch({ type: ActionType.ADD_TODO_LIST, payload: { list } });
     } catch (e) {
-      setLoading('fetchTodoList', false, true, e.message);
       addToast({ message: 'error', type: GeneralModel.ToastType.ERROR });
     }
   }
 
   const addTodo = (todo: TodoModel.ITodo) => {
-    dispatch({ type: ActionType.ADD_TODO , payload: { todo } });
+    const id = new Date().toString();
+    dispatch({ type: ActionType.ADD_TODO , payload: { todo: { ...todo, id } } });
     addToast({ message: 'success', type: GeneralModel.ToastType.SUCCESS });
   };
 
-  const removeTodo = (id: number) => {
+  const removeTodo = (id: string) => {
     dispatch({ type: ActionType.REMOVE_TODO , payload: { id } });
   };
 

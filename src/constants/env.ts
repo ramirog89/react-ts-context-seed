@@ -12,4 +12,5 @@ export const ENV = {
     MAX_RETRIES: 3,
     RETRY_TIMEOUT: 1000,
   },
+  TOAST_DELAY: 3000
 };

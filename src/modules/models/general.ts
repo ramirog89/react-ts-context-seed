@@ -4,8 +4,6 @@ export type Nullable<T> = { [P in keyof T]: T[P] | null };
 
 export type IEntityMap<T> = { [key:string]: T };
 
-export type ILoading = { isLoading: boolean; error?: any; hasError?: boolean; };
-
 export enum ToastType {
   SUCCESS = 'success',
   ERROR = 'error',
@@ -13,6 +11,7 @@ export enum ToastType {
 }
 
 export interface IToast {
+  id?: string;
   message: string;
   type: ToastType;
 };
