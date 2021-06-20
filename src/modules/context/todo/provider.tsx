@@ -10,7 +10,7 @@ import { useGeneral } from '../general';
 interface ITodoContext {
   state: IState;
   addTodo: (todo: TodoModel.ITodo) => void;
-  removeTodo: (id: string) => void;
+  removeTodo: (id: number) => void;
   fetchTodoList: () => void;
 }
 
@@ -26,8 +26,8 @@ export const useTodo = () => {
 
 export const TodoProvider = (props: IProviderProps) => {
   const { deps } = props;
-  const [state, dispatch] = useReducer(reducer, initialState);
   const { addToast } = useGeneral();
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchTodoList = async () => {
     try {
@@ -39,12 +39,12 @@ export const TodoProvider = (props: IProviderProps) => {
   }
 
   const addTodo = (todo: TodoModel.ITodo) => {
-    const id = new Date().toString();
+    const id = new Date().getTime();
     dispatch({ type: ActionType.ADD_TODO , payload: { todo: { ...todo, id } } });
     addToast({ message: 'success', type: GeneralModel.ToastType.SUCCESS });
   };
 
-  const removeTodo = (id: string) => {
+  const removeTodo = (id: number) => {
     dispatch({ type: ActionType.REMOVE_TODO , payload: { id } });
   };
 
@@ -52,4 +52,3 @@ export const TodoProvider = (props: IProviderProps) => {
 
   return <TodoContext.Provider value={value} {...props} />
 };
-

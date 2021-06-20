@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState, memo } from 'react';
+import { useCallback, memo, useEffect, useState } from 'react';
 import { useTodo } from '../../context/todo';
 
 const NoteList = () => {
   const { state, addTodo, removeTodo, fetchTodoList } = useTodo();
-  const [loading, setLoading] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState(true);
 
   const addTodoHandler = useCallback(() => {
     addTodo({
@@ -13,17 +13,19 @@ const NoteList = () => {
     });
   }, [state.todoList, addTodo]);
 
-  const removeTodoHandler = useCallback((id: string) => {
+  const removeTodoHandler = useCallback((id: number) => {
     removeTodo(id);
   }, [removeTodo]);
 
-  useEffect(() => {
-    setLoading(true);
-    fetchTodoList();
-    setLoading(false);
-  }, [setLoading, fetchTodoList]); // eslint-disable-line
 
-  if (loading) {
+  useEffect(() => {
+    (async function() {
+      await fetchTodoList();
+      setLoading(false);
+    })();
+  }, []); // eslint-disable-line
+
+  if (isLoading) {
     return <>Loading...</>;
   }
 

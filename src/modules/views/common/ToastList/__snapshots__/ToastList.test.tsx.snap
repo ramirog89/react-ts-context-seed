@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastList should render 1`] = `
+<div>
+  <div
+    class="toast-list"
+    style="position: fixed; bottom: 1rem; right: 1rem;"
+  >
+    <div
+      class="success"
+      style="border: 1px solid gray; padding: 6px; border-radius: 5px;"
+    >
+      todo test 1
+    </div>
+  </div>
+</div>
+`;
