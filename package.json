@@ -8,6 +8,11 @@
     "start:dev": "dotenv -e ./src/config/.env.develop react-scripts start",
     "build": "dotenv -e ./src/config/.env.production react-scripts build",
     "test": "react-scripts test --watchAll=false --detectOpenHandles --coverage --verbose --forceExit",
+    "cy:open": "cypress open",
+    "cypress": "cypress run --browser chrome",
+    "cypress:headless": "cypress run --browser chrome --headless",
+    "test:e2e": "BROWSER=none start-server-and-test start 3000 cypress",
+    "test:e2e:ci": "start-server-and-test start 3000 cypress:headless",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -59,9 +64,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/cypress": "^7.0.6",
     "@testing-library/react-hooks": "^7.0.0",
     "@types/react-router": "^5.1.14",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "cypress": "^7.5.0",
+    "start-server-and-test": "^1.12.5"
   },
   "jest": {
     "collectCoverageFrom": [

@@ -31,10 +31,10 @@ const NoteList = () => {
 
   return (
     <>
-      <button data-testid="add-btn" onClick={addTodoHandler}>Add todo</button>
-      {state.todoList.map((todo) => (
-        <div data-testid="todo-item" key={todo.id}>
-          {todo.description} <button data-testid="delete-btn" onClick={() => removeTodoHandler(todo.id as any)}>X</button>
+      <button id="add-todo-btn" data-testid="add-btn" onClick={addTodoHandler}>Add todo</button>
+      {state?.todoList?.map((todo) => (
+        <div data-testid="todo-item" className="todo-item" key={todo.id}>
+          {todo.description} <button id="del-todo-btn" data-testid="delete-btn" onClick={() => removeTodoHandler(todo.id as any)}>X</button>
         </div>
       ))}
     </>
